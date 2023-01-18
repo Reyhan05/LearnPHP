@@ -125,7 +125,7 @@ class contoh {
     }
 }
 
-// membuat sebuah object baru untuk menampilkan hasil
+// membuat sebuah object baru untuk munculkan hasil
 $namaSaya = new contoh();
 $namaSaya->nik = '1234';
 echo $namaSaya->testing();
