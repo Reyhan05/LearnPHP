@@ -88,4 +88,52 @@
 
     // tampilkan array
     echo $kendaraan[1];
+
+    echo "<br/>";
+
+    // array asosiatif
+    $kendaraan = [
+        'Mobil' => 'Toyota',
+        'Motor' => 'Honda',
+        'Sepeda' => 'Polygon',
+        'Pesawat' => 'Lion Air'
+    ];
+
+    // tampilkan array asosiatif
+    echo $kendaraan['Mobil'];
+
+    echo "<br/>";
+
+    // array multidimensi
+    $kendaraan = [
+        'Mobil' => [
+            'Toyota' => 'Avanza',
+            'Honda' => 'Jazz',
+            'Suzuki' => 'Ertiga'
+        ],
+        'Motor' => [
+            'Honda' => 'Beat',
+            'Yamaha' => 'Mio',
+            'Suzuki' => 'Satria'
+        ],
+        'Sepeda' => [
+            'Polygon' => 'Xtrada',
+            'Wimcycle' => 'Xtrada',
+            'Polygon' => 'Xtrada'
+        ],
+        'Pesawat' => [
+            'Lion Air' => 'Boeing',
+            'Garuda' => 'Boeing',
+            'Citilink' => 'Boeing'
+        ]
+    ];
+
+    // tampilkan array multidimensi
+    echo $kendaraan['Mobil']['Toyota'];
+    echo "<br/>";
+    echo $kendaraan['Pesawat']['Garuda'];
+
+    echo "<br/>";
+
+    
 ?>    
