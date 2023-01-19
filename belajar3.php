@@ -23,9 +23,9 @@
 
     // operator logika
     $laki = 'reyhan';
-    $perempuan = 'fulana';
+    $perempuan = 'wanita';
 
-    if ($laki == 'reyhan' && $perempuan == 'devin') {
+    if ($laki == 'reyhan' || $perempuan == 'perempuan') {
         echo 'benar';
     } else {
         echo 'salah';
