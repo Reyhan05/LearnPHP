@@ -11,13 +11,24 @@
     }
 
     // for if else odd even
-    for ($i=1; $i <= 21; $i++) {
+    for ($i=1; $i <= 20; $i++) {
         if ($i % 2 == 0) {
-            echo "ganjil <br/>$i";
+            echo "ganjil <br/>";
         } else {
-            echo "genap <br/>$i";
+            echo "genap <br/>";
         }
     }
 
+    echo "<br/>";
+
+    // operator logika
+    $laki = 'reyhan';
+    $perempuan = 'fulana';
+
+    if ($laki == 'reyhan' && $perempuan == 'devin') {
+        echo 'benar';
+    } else {
+        echo 'salah';
+    }
 
 ?>
