@@ -1,8 +1,10 @@
 <?php
     // metode if else
-    $a = 'magic';
+    $a = 'budis';
 
-    if ($a) {
+    //if itu adalah kondisi yang di inginkan
+    if ($a = 'budi') {
+        // tampilkan hasil
         echo 'Berhasil';
     } else {
         echo 'Gagal';
