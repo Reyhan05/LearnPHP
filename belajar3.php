@@ -61,7 +61,7 @@
 
 ?>
 
- <form method="get" action="belajar3.php">
+ <form method="post" action="belajar3.php">
         <label>Nama</label>
         <input type="text" name="nama">
         <br/>
@@ -74,8 +74,8 @@
 <?php
 
     // mengambil data dengan form handling GET
-    $nama = isset($_GET['nama']);
-    $umur = isset($_GET['umur']);
+    $nama = $_POST['nama'];
+    $umur = $_POST['umur'];
 
     // Tampilkan hasil 
     echo 'Nama Saya : '.$nama;
