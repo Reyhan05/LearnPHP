@@ -25,6 +25,10 @@
     $laki = 'reyhan';
     $perempuan = 'wanita';
 
+    // && = and ini akan memanggil semua kondisi yang ada di dalam if
+    // || = or ini hanya memanggil salah satu kondisi yang ada di dalam if
+    // ! = not ini hanya memanggil kondisi yang tidak ada di dalam if
+
     if ($laki == 'reyhan' || $perempuan == 'perempuan') {
         echo 'benar';
     } else {
