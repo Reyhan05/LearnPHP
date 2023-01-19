@@ -58,4 +58,26 @@
     // Sisa Bagi
     echo $a % $b."<br/>";
 
+
 ?>
+
+ <form method="get" action="belajar3.php">
+        <label>Nama</label>
+        <input type="text" name="nama">
+        <br/>
+        <label>Umur</label>
+        <input type="text" name="umur">
+        <br/>
+        <button type="submit">Kirim</button>
+    </form>
+
+<?php
+
+    // mengambil data dengan form handling GET
+    $nama = isset($_GET['nama']);
+    $umur = isset($_GET['umur']);
+
+    // Tampilkan hasil 
+    echo 'Nama Saya : '.$nama;
+    echo 'Umur Saya : '.$umur;
+?>    
