@@ -135,5 +135,24 @@
 
     echo "<br/>";
 
-    
+    // latihan array multidimensi
+    $handphone = [
+        'apple' => [
+            '12' => ['pro max', 'pro']
+        ],
+        'samsung' => [
+            'note',
+            'galaxy' => ['ultra', 's17', 'max'],
+            'tablet',
+            'laptop'
+        ],
+        'xiaomi' => ['note 10 pro', 'note 10', 'note 30 pro']
+    ];
+
+    echo $handphone['apple']['12'][0];
+    echo "<br/>";
+    echo $handphone['samsung']['galaxy'][1];
+    echo "<br/>";
+    echo $handphone['xiaomi'][2];
+
 ?>    
