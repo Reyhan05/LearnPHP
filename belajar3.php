@@ -35,4 +35,27 @@
         echo 'salah';
     }
 
+    echo "<br/>";
+
+    // operator aritmatika
+    // +, -, *, /, %
+    // contoh operator aritmatika
+    $a = 10;
+    $b = 5;
+
+    // Penjumlahan
+    echo $a + $b."<br/>";
+
+    // Pengurangan
+    echo $a - $b."<br/>";
+
+    // Perkalian
+    echo $a * $b."<br/>";
+
+    // Pembagian
+    echo $a / $b."<br/>";
+
+    // Sisa Bagi
+    echo $a % $b."<br/>";
+
 ?>
