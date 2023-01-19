@@ -80,4 +80,12 @@
     // Tampilkan hasil 
     echo 'Nama Saya : '.$nama;
     echo 'Umur Saya : '.$umur;
+
+    echo "<br/>";
+
+    // array
+    $kendaraan = ['Mobil', 'Motor', 'Sepeda', 'Pesawat'];
+
+    // tampilkan array
+    echo $kendaraan[1];
 ?>    
