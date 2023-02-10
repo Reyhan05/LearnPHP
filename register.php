@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+    require_once 'koneksi.php';
     // Untuk mengirim data ke table user
     if (isset($_POST['submit'])){
         $username = strip_tags($_POST['username']);
@@ -7,7 +8,17 @@
         $nama = strip_tags($_POST['nama']);
         $password = strip_tags($_POST['password']);
 
-        
+        // membuat sebuah validasi
+        if (empty($username) || empty($nama) || empty($password)){
+            echo 'Data harus di isi semua!!!';
+            // jika data yang dimasukan lebih dari 1 atau ada persamaan 
+        } elseif (count(array) $connect->query('select username from users where username = "'.$username.'"')->fetch_array()) > 1 {
+            echo 'Data sudah ada !';
+        } else {
+            // jika data yang dimasukan benar
+            $connect->query('insert into users (username, email, nama, password) values ("'.$username.'", "'.$email.'", "'.$nama.'", "'.$password.'")');
+            echo 'Register Berhasil';
+        }
     }
 ?>
 <body>
