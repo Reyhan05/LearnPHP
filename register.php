@@ -12,7 +12,7 @@
         if (empty($username) || empty($nama) || empty($password)){
             echo 'Data harus di isi semua!!!';
             // jika data yang dimasukan lebih dari 1 atau ada persamaan 
-        } elseif (count(array) $connect->query('select username from users where username = "'.$username.'"')->fetch_array()) > 1 {
+        } elseif (count((array) $connect->query('select username from users where username = "'.$username.'"')->fetch_array()) > 1) {
             echo 'Data sudah ada !';
         } else {
             // jika data yang dimasukan benar
