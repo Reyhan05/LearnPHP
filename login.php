@@ -20,7 +20,7 @@
     // membuat validasi
     if (empty($email) || empty($password)){
         echo 'data harus di isi !';
-    } else (count(array) $connect->query('select email from users where email = "'.$email.'"')->fetch_array()) == 0{
+    } elseif (count((array) $connect->query('select email from users where email = "'.$email.'"')->fetch_array()) == 0){
         echo 'email tidak terdaftar !';
     } else {
         $user = $connect->query('select email, password from users')->fetch_assoc();
