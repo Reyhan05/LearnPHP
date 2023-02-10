@@ -16,7 +16,7 @@
             echo 'Data sudah ada !';
         } else {
             // jika data yang dimasukan benar
-            $input = $connect->query('insert into users ('username', 'email', 'nama', 'password') values ('.$username.','.$email.','.$nama.','.password_hash($password, PASSWORD_BCRYPT).')');
+            $input = $connect->query('insert into users (username, email, nama, password) values ('.$username.','.$email.','.$nama.','.password_hash($password, PASSWORD_BCRYPT).')');
             if ($input){
                 echo 'Berhasil';
             } else {
