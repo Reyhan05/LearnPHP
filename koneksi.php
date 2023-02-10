@@ -10,5 +10,7 @@ $connect = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if ($connect->errno){
     echo $connect->error;
     exit;
+} else {
+    echo 'Koneksi Berhasil';
 }
 ?>
