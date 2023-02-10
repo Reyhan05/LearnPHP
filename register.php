@@ -8,5 +8,5 @@
     <br/>
     <input type="password" name="password" autocomplete="off" placeholder="Masukan Password..."/>
     <br/>
-    <button type="submit" name="submit"></button>
+    <button type="submit" name="submit">Register</button>
 </form>
