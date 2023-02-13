@@ -10,7 +10,7 @@
 
        //membuat sebuah validasi
        if (empty($username) || empty($email) || empty($nama) || empty($password)) {
-         echo 'data harus di isi !';
+         echo '';
          //jika data yang dimasukkan lebih dari 1 atau ada persamaan request
        } elseif (count((array) $connect->query('select username from users where username = "'.$username.'"')->fetch_array()) > 1){
         echo 'data sudah ada !';
