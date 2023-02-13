@@ -20,6 +20,7 @@
         $input = $connect->query("insert into users(nama,username,email,password) values ('$nama','$username','$email','$hashing')");
         if ($input){
             echo 'sukses';
+            header('location: login.php');
         } else {
             echo 'gagal maning';
         }
