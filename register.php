@@ -16,7 +16,7 @@
         echo 'data sudah ada !';
         //input data ke database
        } else {
-        $hashing = password_hash($password, PASSWORD_DEFAULT);
+        $hashing = md5($password);
         $input = $connect->query("insert into users(nama,username,email,password) values ('$nama','$username','$email','$hashing')");
         if ($input){
             echo 'sukses';
