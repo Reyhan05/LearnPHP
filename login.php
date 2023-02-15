@@ -29,6 +29,14 @@
         
         $query = "select * from users where email = '$email' and password = '$password'";
         $hasil = mysqli_query($connect, $query);
+        if ($hasil->num_rows > 0){
+            $baris = mysqli_fetch_assoc($hasil);
+            $_SESSION['nama'] = $baris['nama'];
+            header('location: halaman1.php');
+            // jikalau data login tidak ada / gagal
+        } else {
+            echo '<script>alert("Email atau Password Salah")</script>';
+        }
     }
 
 
