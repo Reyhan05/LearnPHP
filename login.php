@@ -22,6 +22,15 @@
         header('location: halaman1.php');
     }
 
+    // membuat sebuah validasi mencocokan email password di database
+    if (isset($_POST['submit'])){
+        $email = $_POST['email'];
+        $password = md5($_POST['password']);
+        
+        $query = "select * from users where email = '$email' and password = '$password'";
+        $hasil = mysqli_query($connect, $query);
+    }
+
 
     ?>
     <!-- method post untuk mengirim data -->
