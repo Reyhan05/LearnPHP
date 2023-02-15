@@ -32,6 +32,8 @@
         if ($hasil->num_rows > 0){
             $baris = mysqli_fetch_assoc($hasil);
             $_SESSION['nama'] = $baris['nama'];
+            $_SESSION['email'] = $baris['email'];
+            $_SESSION['username'] = $baris['username'];
             header('location: halaman1.php');
             // jikalau data login tidak ada / gagal
         } else {

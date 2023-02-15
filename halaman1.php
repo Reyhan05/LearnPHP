@@ -11,9 +11,15 @@
     <?php
         // untuk menjalankan session
         session_start();
+
+        // validasi jikalau login tidak di isi
+        if (!$_SESSION['nama']){            
+            header('location: login.php');
+        }
     ?>
     <h2>Selamat Datang <?php echo $_SESSION['nama']; ?></h2>
     <h3>Email Anda <?php echo $_SESSION['email']; ?></h3>
+    <h3>Username Lo <?php echo $_SESSION['username']; ?></h3>
 
     <a href="logout.php">Logout</a>
 </body>
