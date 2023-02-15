@@ -18,9 +18,9 @@
     session_start();
 
     // membuat sebuah validasi login jikalau sesi nama ada, bisa login
-    if (isset($_SESSION['nama'])){
-        header('location: halaman1.php');
-    }
+    // if (isset($_SESSION['nama'])){
+    //     header('location: halaman1.php');
+    // }
 
     // membuat sebuah validasi mencocokan email password di database
     if (isset($_POST['submit'])){
@@ -35,7 +35,7 @@
             header('location: halaman1.php');
             // jikalau data login tidak ada / gagal
         } else {
-            echo '<script>alert("Email atau Password Salah")</script>';
+            echo '<script>alert("Email atau Password Salah !!!")</script>';
         }
     }
 
