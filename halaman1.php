@@ -7,6 +7,14 @@
     <title>Halaman Utama</title>
 </head>
 <body>
-    <h1>Anda berhasil masuk</h1>
+    <!-- <h1>Anda berhasil masuk</h1> -->
+    <?php
+        // untuk menjalankan session
+        session_start();
+    ?>
+    <h2>Selamat Datang <?php echo $_SESSION['nama']; ?></h2>
+    <h3>Email Anda <?php echo $_SESSION['email']; ?></h3>
+
+    <a href="logout.php">Logout</a>
 </body>
 </html>
