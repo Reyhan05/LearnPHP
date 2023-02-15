@@ -8,31 +8,20 @@
 </head>
 <body>
     <?php
-    // memanggil config database
-    require_once 'koneksi.php';
+   // memanggil config database
+   include 'koneksi.php';
 
-    // jika button submit di klik
-    if (isset($_POST['submit'])){
-       $email = strip_tags($_POST['email']);
-       $password = strip_tags($_POST['password']);
+   // menambahkan error reporting
+   error_reporting(0);
+
+   // membuat session
+    session_start();
+
+    // membuat sebuah validasi login jikalau sesi nama ada, bisa login
+    if (isset($_SESSION['nama'])){
+        header('location: halaman1.php');
     }
 
-    // membuat validasi
-    if (empty($email) || empty($password)){
-        echo 'data harus di isi !';
-    } elseif (count((array) $connect->query('select email from users where email = "'.$email.'"')->fetch_array()) == 0){
-        echo 'email tidak terdaftar !';
-    } else {
-        $user = $connect->query('select email, password from users')->fetch_assoc();
-        // jika usernya ada 
-        if (password_verify($password, $user['password'])){
-            $_SESSION['is_login'] = true;
-            $_SESSION['nama'] = $user['nama'];
-            header('location: halaman1.php');
-        } else {
-            echo 'password salah COK !';
-        }
-    }
 
     ?>
     <!-- method post untuk mengirim data -->
