@@ -13,7 +13,7 @@
         session_start();
 
         // validasi jikalau login tidak di isi
-        if (!$_SESSION['nama']){            
+        if (!$_SESSION['name']){            
             header('location: login_role.php');
         }
     ?>
