@@ -26,7 +26,7 @@
         $hasil = mysqli_query($connect, $query);
         if ($hasil->num_rows > 0){
             $baris = mysqli_fetch_assoc($hasil);
-            $_SESSION['nama'] = $baris['nama'];
+            $_SESSION['name'] = $baris['name'];
             $_SESSION['email'] = $baris['email'];
             if ($baris['role'] == 'admin') {
                 header('location: halaman_admin.php');
@@ -35,8 +35,6 @@
             } else {
                 echo '<script>alert("Akun ini tidak mempunyai hak akses !!!")</script>';
             }
-
-            header('location: halaman1.php');
             // jikalau data login tidak ada / gagal
         } else {
             echo '<script>alert("Email atau Password Salah !!!")</script>';
@@ -108,7 +106,7 @@
                                         </div>
 
                                         <p class="text-center text-muted mt-5 mb-0">Haven't ready an account? <a
-                                                href="login.php" class="fw-bold text-body"><u>Register here</u></a></p>
+                                                href="register_role.php" class="fw-bold text-body"><u>Register here</u></a></p>
                                     </form>
 
                                 </div>
