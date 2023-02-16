@@ -72,24 +72,31 @@
 
                                     <form method="post">
                                         <div class="form-outline mb-4">
-                                            <input class="form-control form-control-lg" type="text" name="username"
-                                                autocomplete="off" placeholder="isi username.." />
+                                            <input class="form-control form-control-lg" type="text" name="name"
+                                                   placeholder="isi username.." />
                                         </div>
+                                        
+                                        <select name="role" class="form-control form-control-lg">
+                                                    <option value="role">--Pilih Role--</option>
+                                                    <option value="admin">Admin</option>
+                                                    <option value="guru">Guru</option>
+
+                                        </select>                
 
                                         <div class="form-outline mb-4">
                                             <input class="form-control form-control-lg" type="email" name="email"
-                                                autocomplete="off" placeholder="isi email.." />
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <input class="form-control form-control-lg" type="text" name="nama"
-                                                autocomplete="off" placeholder="isi nama lengkap.." />
+                                                placeholder="isi email.." />
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <input class="form-control form-control-lg" type="password" name="password"
-                                                autocomplete="off" placeholder="isi password.." />
+                                                 placeholder="isi password.." />
                                         </div>
+
+                                        <div class="form-outline mb-4">
+                                            <input class="form-control form-control-lg" name="address"
+                                                 placeholder="isi alamat.." />
+                                        </div>    
 
                                         <div class="form-check d-flex justify-content-center mb-5">
                                             <input class="form-check-input me-2" type="checkbox" value=""
