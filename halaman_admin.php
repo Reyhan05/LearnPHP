@@ -9,6 +9,7 @@
 <body>
     <!-- <h1>Anda berhasil masuk</h1> -->
     <?php
+        include('koneksi.php');
         // untuk menjalankan session
         session_start();
 
@@ -22,6 +23,47 @@
     <br/>
     ini adalah halaman admin
 
-    <a href="login_role.php">Logout</a>
+    <a href="logout_role.php">Logout</a>
+
+    <!-- Buat fungsi ke halaman tambah data -->
+    <a href="tambah_admin.php">Tambah Data</a> 
+
+    <!-- Buat fungsi ke halaman tambah data -->
+    <a href="tambah_admin.php">Tambah Data</a>
+
+    <!-- Buat table untuk menampun datanya-->
+    <table width="100" border="1">
+        <tr>
+            <th>Nik</th>
+            <th>Nama</th>
+            <th>Kelas</th>
+            <th>Jurusan</th>
+            <th>Alamat</th>
+            <th>Opsi</th>
+        </tr>
+        <!-- Buat fungsi read data -->
+        <?php
+            $hasil = mysqli_query($connect, "select * FROM student ORDER BY id DESC");
+            // me loop hasil query dari $hasil
+            if ($hasil -> num_rows > 0){
+            foreach ($hasil as $data) {
+                    echo "<tr>
+                    <td>".$data['nik']."</td>
+                    <td>".$data['nama']."</td>
+                    <td>".$data['kelas']."</td>
+                    <td>".$data['jurusan']."</td>
+                    <td>".$data['alamat']."</td>
+                    <td>
+                        <a href='edit_admin.php?id=".$data['id']."'>Edit</a> |
+                        <a href='hapus_admin.php?id=".$data['id']."'>Hapus</a>
+                    </td>
+                </tr>";   
+            }
+                } else {
+                    echo "<tr><td colspan='6'>Data Masih Kosong</td></tr>";
+            }
+        ?>
+    </table>
+
 </body>
 </html>
