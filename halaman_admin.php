@@ -32,7 +32,7 @@
     <a href="tambah_admin.php">Tambah Data</a>
 
     <!-- Buat table untuk menampun datanya-->
-    <table width="100" border="1">
+    <table width="100%" border="1">
         <tr>
             <th>Nik</th>
             <th>Nama</th>
