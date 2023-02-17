@@ -77,7 +77,7 @@
                                         </div>
                                         
                                         <select name="role" class="form-control form-control-lg">
-                                                    <option value="role">--Pilih Role--</option>
+                                                    <option selected disabled>--Pilih Role--</option>
                                                     <option value="admin">Admin</option>
                                                     <option value="guru">Guru</option>
 

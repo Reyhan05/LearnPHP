@@ -28,9 +28,6 @@
     <!-- Buat fungsi ke halaman tambah data -->
     <a href="tambah_admin.php">Tambah Data</a> 
 
-    <!-- Buat fungsi ke halaman tambah data -->
-    <a href="tambah_admin.php">Tambah Data</a>
-
     <!-- Buat table untuk menampun datanya-->
     <table width="100%" border="1">
         <tr>
