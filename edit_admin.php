@@ -10,7 +10,17 @@
     
 
     <?php
-        // fungsi edit data
+        // fungsi update data
+        if (isset($_POST['update'])){
+            $id = $_POST['id'];
+            $id = $_POST['nik'];
+            $id = $_POST['nama'];
+            $id = $_POST['kelas'];
+            $id = $_POST['jurusan'];
+            $id = $_POST['alamat'];
+
+        }
+
         include "koneksi.php";
 
         // memanggil parameter id yang akan di edit
