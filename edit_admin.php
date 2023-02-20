@@ -48,9 +48,9 @@
                 <td>
                     <select name="jurusan">
                         <option selected disabled>-- Pilih Jurusan --</option>
-                        <option value="RPL">RPL</option>
-                        <option value="TKJ">TKJ</option>
-                        <option value="DMM">DMM</option>
+                        <option <?php if ($jurusan == 'RPL') {echo 'selected';} ?> value="RPL">RPL</option>
+                        <option <?php if ($jurusan == 'TKJ') {echo 'selected';} ?> value="TKJ">TKJ</option>
+                        <option <?php if ($jurusan == 'DMM') {echo 'selected';} ?> value="DMM">DMM</option>
                     </select>    
                 </td>
             </tr>
