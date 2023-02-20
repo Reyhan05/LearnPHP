@@ -7,9 +7,9 @@
     <title>Edit & Update admin</title>
 </head>
 <body>
-    
 
     <?php
+        include('koneksi.php');
         // fungsi update data
         if (isset($_POST['update'])){
             $id = $_POST['id'];
@@ -19,9 +19,10 @@
             $id = $_POST['jurusan'];
             $id = $_POST['alamat'];
 
-        }
+            // membuat query untuk update data
+            $result = mysqli_query($connect, "UPDATE student SET nik='$nik', nama='$nama', kelas='$kelas', jurusan='$jurusan', alamat='$alamat' WHERE id='$id'");
 
-        include "koneksi.php";
+        }
 
         // memanggil parameter id yang akan di edit
         $id = $_GET['id'];
