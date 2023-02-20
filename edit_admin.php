@@ -22,6 +22,18 @@
             // membuat query untuk update data
             $result = mysqli_query($connect, "UPDATE student SET nik='$nik', nama='$nama', kelas='$kelas', jurusan='$jurusan', alamat='$alamat' WHERE id='$id'");
 
+            // kondisi jika berhasil di update
+         if ($result){
+            echo "<script>
+              alert('Data berhasil di update !')
+              window.location.href = 'halaman_admin.php'
+              </script>";
+        } else {
+            // jika query gagal di eksekusi
+            echo '<script>
+              alert(" gagal Maning !")
+              </script>';
+              }
         }
 
         // memanggil parameter id yang akan di edit
