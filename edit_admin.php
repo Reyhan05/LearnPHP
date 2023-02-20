@@ -13,11 +13,11 @@
         // fungsi update data
         if (isset($_POST['update'])){
             $id = $_POST['id'];
-            $id = $_POST['nik'];
-            $id = $_POST['nama'];
-            $id = $_POST['kelas'];
-            $id = $_POST['jurusan'];
-            $id = $_POST['alamat'];
+            $nik = $_POST['nik'];
+            $nama = $_POST['nama'];
+            $kelas = $_POST['kelas'];
+            $jurusan = $_POST['jurusan'];
+            $alamat = $_POST['alamat'];
 
             // membuat query untuk update data
             $result = mysqli_query($connect, "UPDATE student SET nik='$nik', nama='$nama', kelas='$kelas', jurusan='$jurusan', alamat='$alamat' WHERE id='$id'");
