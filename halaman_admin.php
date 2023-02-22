@@ -14,7 +14,8 @@
         session_start();
 
         // validasi jikalau login tidak di isi
-        if (!$_SESSION['name']){            
+        if (!$_SESSION['name']){           
+            echo "<script>alert('anda harus login dulu')</script>"; 
             header('location: login_role.php');
         }
     ?>
@@ -27,6 +28,12 @@
 
     <!-- Buat fungsi ke halaman tambah data -->
     <a href="tambah_admin.php">Tambah Data</a> 
+
+    <form method="get">
+        <!-- form input untuk mengisi data yang akan dicari -->
+        <input type="text" name="search" placeholder="cari data..." value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>">
+        <button type="submit">cari</button>
+    </form>
 
     <!-- Buat table untuk menampun datanya-->
     <table width="100%" border="1">
@@ -48,6 +55,7 @@
                     echo "<tr>
                     <td>".$data['nik']."</td>
                     <td>".$data['nama']."</td>
+                    <td>".$data['foto']."</td>
                     <td>".$data['kelas']."</td>
                     <td>".$data['jurusan']."</td>
                     <td>".$data['alamat']."</td>
