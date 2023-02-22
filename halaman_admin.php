@@ -48,26 +48,36 @@
         </tr>
         <!-- Buat fungsi read data -->
         <?php
-            $hasil = mysqli_query($connect, "select * FROM student ORDER BY id DESC");
-            // me loop hasil query dari $hasil
-            if ($hasil -> num_rows > 0){
-            foreach ($hasil as $data) {
+        if(isset($_GET['search'])){
+            $katacari = $_GET['search'];
+
+            $query = "select * from student where nama like '%".$katacari."%' order by id desc";
+            // jika tidak mendapatkan data yang dicari
+        } else {
+            $query = "select * from student order by id desc";
+        }
+        $hasils = mysqli_query($connect, $query);
+            // ngelooping hasi query dari $hasil
+            if($hasils->num_rows > 0){
+                foreach($hasils as $hasil) {
                     echo "<tr>
-                    <td>".$data['nik']."</td>
-                    <td>".$data['nama']."</td>
-                    <td>".$data['foto']."</td>
-                    <td>".$data['kelas']."</td>
-                    <td>".$data['jurusan']."</td>
-                    <td>".$data['alamat']."</td>
-                    <td>
-                        <a href='edit_admin.php?id=".$data['id']."'>Edit</a> |
-                        <a href='hapus_admin.php?id=".$data['id']."'>Hapus</a>
-                    </td>
-                </tr>";   
+                            <td>".$hasil['nama']."</td>
+                            <td>".$hasil['foto']."</td>
+                            <td>".$hasil['nik']."</td>
+                            <td>".$hasil['kelas']."</td>
+                            <td>".$hasil['jurusan']."</td>
+                            <td>".$hasil['alamat']."</td>
+                            <td>
+                                <a href='edit_admin.php? id=".$hasil['id']."'>Edit</a> | <a href='hapus_admin.php? id=".$hasil['id']."'>hapus</a>
+                            </td>
+                          </tr>";
+                }
+            } else {
+                echo "<tr>
+                        <td colspan='6'>Data masih kosong !</td>
+                    </tr>";
             }
-                } else {
-                    echo "<tr><td colspan='6'>Data Masih Kosong</td></tr>";
-            }
+            
         ?>
     </table>
 

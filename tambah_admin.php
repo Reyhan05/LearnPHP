@@ -11,7 +11,7 @@
      <a href="halaman_admin.php">Kembali</a>
 
      <!-- form untuk mengisi data -->
-     <form method="post">
+     <form method="post" enctype="multipart/form-data">
         <table width="25%" border="0">
             <tr>
                 <td>Nik</td>
@@ -84,7 +84,7 @@
        if (empty($nik) || empty($nama) || empty($kelas) || empty($jurusan) || empty($alamat)) {
          echo "<script>alert('Data tidak boleh kosong !');</script>";
          //jika data yang dimasukkan lebih dari 1 atau ada persamaan request
-       } elseif (count((array) $connect->query('select nik from siswa where nik = "'.$nik.'"')->fetch_array()) > 1){
+       } elseif (count((array) $connect->query('select nik from student where nik = "'.$nik.'"')->fetch_array()) > 1){
         echo '<script>alert("Nik sudah ada !");</script>';
         //input data ke database
        } else {
@@ -99,7 +99,7 @@
                 //untuk menampung file ke dalam folder yang di tuju
                 move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$ran.'_'.$namafile);
                 //query untuk menyimpan data di database
-                $connect->query("insert into siswa(nik,nama,foto,kelas,jurusan,alamat) values ('$nik','$nama','$xx','$kelas','$jurusan','$alamat')");
+                $connect->query("insert into student(nik,nama,foto,kelas,jurusan,alamat) values ('$nik','$nama','$xx','$kelas','$jurusan','$alamat')");
                 echo '<script>
                         alert("Data berhasil ditambahkan !");
                         window.location.href = "halaman_admin.php";  
