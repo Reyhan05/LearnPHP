@@ -33,6 +33,7 @@
         <tr>
             <th>Nik</th>
             <th>Nama</th>
+            <th>Foto</th>
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>Alamat</th>

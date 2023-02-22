@@ -60,26 +60,52 @@
        $jurusan = strip_tags($_POST['jurusan']);
        $alamat = strip_tags($_POST['alamat']);
 
-       //membuat sebuah validasi
+       //untuk membuat sebuah nilai random
+       $ran = rand();
+
+       // untuk menampung ekstensi / format yang boleh di upload
+       $ekstensi = ['png','jpg','jpeg','svg'];
+
+       // menampung request file    
+       $namafile = $_FILES['foto']['name'];
+
+       // menampung request ukuran file
+       $ukuran = $_FILES['foto']['size'];
+
+       //untuk mengambil format ekstensi file
+       $ext = pathinfo($namafile, PATHINFO_EXTENSION);
+
+      //membuat sebuah validasi
        if (empty($nik) || empty($nama) || empty($kelas) || empty($jurusan) || empty($alamat)) {
          echo "<script>alert('Data tidak boleh kosong !');</script>";
          //jika data yang dimasukkan lebih dari 1 atau ada persamaan request
-       } elseif (count((array) $connect->query('select nik from student where nik = "'.$nik.'"')->fetch_array()) > 1){
+       } elseif (count((array) $connect->query('select nik from siswa where nik = "'.$nik.'"')->fetch_array()) > 1){
         echo '<script>alert("Nik sudah ada !");</script>';
         //input data ke database
        } else {
-        $input = $connect->query("insert into student(nik,nama,kelas,jurusan,alamat) values ('$nik','$nama','$kelas','$jurusan','$alamat')");
-        if ($input){
+        // jika data ekstensi yang di tentuin tidak sesuai dengan ekstensi yang ada di file tersebut
+        if (!in_array($ext, $ekstensi)) {
             echo '<script>
-                  alert("Data berhasil ditambahkan !");
-                  window.location.href = "halaman_admin.php";  
+                    alert("format file tidak sesuai !"); 
                   </script>';
         } else {
-            echo '<script>
-                  alert(" gagal Maning !");  
-                  </script>';
+            if ($ukuran < 1044070) {
+                $xx = $ran.'_'.$namafile;
+                //untuk menampung file ke dalam folder yang di tuju
+                move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$ran.'_'.$namafile);
+                //query untuk menyimpan data di database
+                $connect->query("insert into siswa(nik,nama,foto,kelas,jurusan,alamat) values ('$nik','$nama','$xx','$kelas','$jurusan','$alamat')");
+                echo '<script>
+                        alert("Data berhasil ditambahkan !");
+                        window.location.href = "halaman_admin.php";  
+                      </script>';
+            } else {
+                echo '<script>
+                        alert(" gagal Maning !");  
+                      </script>';
+            }
         }
-       }
+    }
     }
 ?>
 </body>
