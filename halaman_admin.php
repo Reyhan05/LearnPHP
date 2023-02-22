@@ -61,9 +61,9 @@
             if($hasils->num_rows > 0){
                 foreach($hasils as $hasil) {
                     echo "<tr>
-                            <td>".$hasil['nama']."</td>
-                            <td>".$hasil['foto']."</td>
                             <td>".$hasil['nik']."</td>
+                            <td>".$hasil['nama']."</td>
+                            <td><img src='img/".$hasil['foto']."' width='35' height='40'></td>
                             <td>".$hasil['kelas']."</td>
                             <td>".$hasil['jurusan']."</td>
                             <td>".$hasil['alamat']."</td>
