@@ -60,10 +60,23 @@
             // ngelooping hasi query dari $hasil
             if($hasils->num_rows > 0){
                 foreach($hasils as $hasil) {
-                    echo "<tr>
+                    if ($hasil['foto'] == null) {
+                        echo "<tr>
                             <td>".$hasil['nik']."</td>
                             <td>".$hasil['nama']."</td>
-                            <td><img src='img/".$hasil['foto']."' width='35' height='40'></td>
+                            <td>Sengaja ga aplot, udh ganteng</td>
+                            <td>".$hasil['kelas']."</td>
+                            <td>".$hasil['jurusan']."</td>
+                            <td>".$hasil['alamat']."</td>
+                            <td>
+                                <a href='edit_admin.php? id=".$hasil['id']."'>Edit</a> | <a href='hapus_admin.php? id=".$hasil['id']."'>hapus</a>
+                            </td>
+                          </tr>";   
+                    } else {
+                        echo "<tr>
+                            <td>".$hasil['nik']."</td>
+                            <td>".$hasil['nama']."</td>
+                            <td><img src='img/".$hasil['foto']."' width='35' height='40'></td>  
                             <td>".$hasil['kelas']."</td>
                             <td>".$hasil['jurusan']."</td>
                             <td>".$hasil['alamat']."</td>
@@ -71,6 +84,7 @@
                                 <a href='edit_admin.php? id=".$hasil['id']."'>Edit</a> | <a href='hapus_admin.php? id=".$hasil['id']."'>hapus</a>
                             </td>
                           </tr>";
+                    }
                 }
             } else {
                 echo "<tr>

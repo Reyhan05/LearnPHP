@@ -8,6 +8,10 @@
     // membuat query untuk menghapus data berdasarkan parameter id
     $result = mysqli_query($connect, "DELETE FROM student WHERE id='$id'");
 
+    // disini untuk membuat query menjadi array
+    $delete = mysqli_fetch_array($result);
+
+
     // mengecek apakah query berhasil di eksekusi
     if ($result){
         echo "<script>
