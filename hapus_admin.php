@@ -5,7 +5,8 @@
     // memanggil parameter id yang akan dihapus
     $id = $_GET['id'];
 
-    
+    // memanggil parameter foto yang akan dihapus
+    $foto = $_GET['foto'];
 
     // membuat query untuk menghapus data berdasarkan parameter id
     $result = mysqli_query($connect, "DELETE FROM student WHERE id='$id'");
