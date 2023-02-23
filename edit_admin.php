@@ -8,17 +8,17 @@
 </head>
 <body>
 
-    <?php
-        include('koneksi.php');
-        // fungsi `edit` data
-        // memanggil parameter id yang akan di edit
+<?php
+        include('koneksi.php');        
+        //fungsi edit data
+        //memanggil parameter id yang akan diedit
         $id = $_GET['id'];
 
-        // membuat query untuk mengedit data berdasarkan parameter id
-        $result = mysqli_query($connect, "SELECT * FROM student WHERE id= $id");
-        
-        // membuat looping object berdasarkan parameter id
-        while($edit = mysqli_fetch_array($result)){
+        //membuat query untuk mengedit data berdasarkan parameter id
+        $result = mysqli_query($connect , "select * from student where id = $id");
+
+        //membuat loopingan object berdasarkan parameter id
+        while($edit = mysqli_fetch_array($result)) {
             $nik = $edit['nik'];
             $nama = $edit['nama'];
             $foto = $edit['foto'];
@@ -26,8 +26,11 @@
             $jurusan = $edit['jurusan'];
             $alamat = $edit['alamat'];
         }
-        // fungsi update data
+
+        //fungsi update data
+        //jikalau tombol update di klik
         if (isset($_POST['update'])){
+            //memanggil seluruh column yang akan di update
             $id = $_POST['id'];
             $nik = $_POST['nik'];
             $nama = $_POST['nama'];
@@ -35,58 +38,54 @@
             $jurusan = $_POST['jurusan'];
             $alamat = $_POST['alamat'];
 
-             //untuk membuat sebuah nilai random
-       $ran = rand();
+            //untuk membuat sebuah nilai random
+            $ran = rand();
+            // untuk menampung ekstensi / format yang boleh di upload
+            $ekstensi = ['png','jpg','jpeg','svg'];
+            // menampung request file
+            $namafile = $_FILES['foto']['name'];
+            // menampung request ukuran file
+            $ukuran = $_FILES['foto']['size'];
+            //untuk mengambil format ekstensi file
+            $ext = pathinfo($namafile, PATHINFO_EXTENSION);
 
-       // untuk menampung ekstensi / format yang boleh di upload
-       $ekstensi = ['png','jpg','jpeg','svg'];
-
-       // menampung request file    
-       $namafile = $_FILES['foto']['name'];
-
-       // menampung request ukuran file
-       $ukuran = $_FILES['foto']['size'];
-
-       //untuk mengambil format ekstensi file
-       $ext = pathinfo($namafile, PATHINFO_EXTENSION);
-
-      //membuat sebuah validasi
-       if (empty($nik) || empty($nama) || empty($kelas) || empty($jurusan) || empty($alamat)) {
-         echo "<script>alert('Data tidak boleh kosong !');</script>";
-         //jika data yang dimasukkan lebih dari 1 atau ada persamaan request
-       } else {
-        // jika data ekstensi yang di tentuin tidak sesuai dengan ekstensi yang ada di file tersebut
-        if (!in_array($ext, $ekstensi)) {
-            echo '<script>
-                    alert("format file tidak sesuai !"); 
-                  </script>';
-        } else {
-            if ($ukuran < 1044070) {
-                $xx = $ran.'_'.$namafile;
-                if (is_file("img/".$foto)){
-
-                    // fungsi hapus php di folder
-                    unlink("img/".$foto);
-                }
-                //untuk menampung file ke dalam folder yang di tuju
-                move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$ran.'_'.$namafile);
-                //query untuk menyimpan data di database
-                $connect->query("UPDATE student SET nik='$nik', nama='$nama', foto='$xx', kelas='$kelas', jurusan='$jurusan', alamat='$alamat' WHERE id='$id'");
-                echo '<script>
-                        alert("Data berhasil ditambahkan !");
-                        window.location.href = "halaman_admin.php";  
-                      </script>';
+            //membuat sebuah validasi
+            if (empty($nik) || empty($nama) || empty($kelas) || empty($jurusan) || empty($alamat)) {
+                echo "<script>alert('Data tidak boleh kosong !');</script>";
+                //input data ke database
             } else {
-                echo '<script>
-                        alert(" gagal Maning !");  
-                      </script>';
+                // jika data ekstensi yang di tentuin tidak sesuai dengan ekstensi yang ada di file tersebut
+                if (!in_array($ext, $ekstensi)) {
+                    echo '<script>
+                            alert("format file tidak sesuai !"); 
+                            </script>';
+                } else {
+                    if ($ukuran < 1044070) {
+                        $xx = $ran.'_'.$namafile;
+                        //jikalau ada fotonya maka sekalian dihapus beserta file yang ada difoldernya
+                        if (is_file("img/".$foto)){
+                            //fungsi hapus file di folder
+                            unlink("img/".$foto); 
+                        }
+                        //untuk menampung file ke dalam folder yang di tuju
+                        move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$ran.'_'.$namafile);
+                        //query untuk menyimpan data di database
+                        $connect->query("update student set nik='$nik', nama='$nama', foto='$xx', kelas='$kelas', jurusan='$jurusan', alamat='$alamat' where id='$id'");
+                        echo '<script>
+                                alert("Data berhasil diupdate !");
+                                    window.location.href = "halaman_admin.php";  
+                                </script>';
+                    } else {
+                        echo '<script>
+                                alert(" gagal Maning !");  
+                                </script>';
+                    }
+                }
             }
         }
-    }
-}
-?>
+    ?>
     
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <table width="25%" border="0">
             <tr>
                 <td>Nik</td>
