@@ -8,17 +8,12 @@
     // memanggil parameter foto yang akan dihapus
     $foto = $_GET['foto'];
 
-    // membuat query untuk menghapus data berdasarkan parameter id
-    $result = mysqli_query($connect, "DELETE FROM student WHERE id='$id'");
-
-    // disini untuk membuat query menjadi array
-    $delete = mysqli_fetch_array($result);
-
+   
     // jikalau ada fotonya maka sekalian di hapus serta file yang ada di foldernya
-    if (is_file("img/".$delete['foto'])){
+    if (is_file("img/".$foto)){
 
         // fungsi hapus php di folder
-        unlink("img/".$delete['foto']);
+        unlink("img/".$foto);
 
         // membuat query hapus data
         mysqli_query($connect, "DELETE FROM student WHERE id='$id'");
