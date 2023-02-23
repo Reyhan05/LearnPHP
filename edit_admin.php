@@ -10,6 +10,22 @@
 
     <?php
         include('koneksi.php');
+        // fungsi `edit` data
+        // memanggil parameter id yang akan di edit
+        $id = $_GET['id'];
+
+        // membuat query untuk mengedit data berdasarkan parameter id
+        $result = mysqli_query($connect, "SELECT * FROM student WHERE id= $id");
+        
+        // membuat looping object berdasarkan parameter id
+        while($edit = mysqli_fetch_array($result)){
+            $nik = $edit['nik'];
+            $nama = $edit['nama'];
+            $foto = $edit['foto'];
+            $kelas = $edit['kelas'];
+            $jurusan = $edit['jurusan'];
+            $alamat = $edit['alamat'];
+        }
         // fungsi update data
         if (isset($_POST['update'])){
             $id = $_POST['id'];
@@ -50,10 +66,15 @@
         } else {
             if ($ukuran < 1044070) {
                 $xx = $ran.'_'.$namafile;
+                if (is_file("img/".$foto)){
+
+                    // fungsi hapus php di folder
+                    unlink("img/".$foto);
+                }
                 //untuk menampung file ke dalam folder yang di tuju
                 move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$ran.'_'.$namafile);
                 //query untuk menyimpan data di database
-                $connect->query("insert into student(nik,nama,foto,kelas,jurusan,alamat) values ('$nik','$nama','$xx','$kelas','$jurusan','$alamat')");
+                $connect->query("UPDATE student SET nik='$nik', nama='$nama', foto='$xx', kelas='$kelas', jurusan='$jurusan', alamat='$alamat' WHERE id='$id'");
                 echo '<script>
                         alert("Data berhasil ditambahkan !");
                         window.location.href = "halaman_admin.php";  
@@ -65,40 +86,8 @@
             }
         }
     }
-
-            // membuat query untuk update data
-            $result = mysqli_query($connect, "UPDATE student SET nik='$nik', nama='$nama', kelas='$kelas', jurusan='$jurusan', alamat='$alamat' WHERE id='$id'");
-
-            // kondisi jika berhasil di update
-         if ($result){
-            echo "<script>
-              alert('Data berhasil di update !')
-              window.location.href = 'halaman_admin.php'
-              </script>";
-        } else {
-            // jika query gagal di eksekusi
-            echo '<script>
-              alert(" gagal Maning !")
-              </script>';
-              }
-        }
-
-        // memanggil parameter id yang akan di edit
-        $id = $_GET['id'];
-
-        // membuat query untuk mengedit data berdasarkan parameter id
-        $result = mysqli_query($connect, "SELECT * FROM student WHERE id= $id");
-        
-        // membuat looping object berdasarkan parameter id
-        while($edit = mysqli_fetch_array($result)){
-            $nik = $edit['nik'];
-            $nama = $edit['nama'];
-            $foto = $edit['foto'];
-            $kelas = $edit['kelas'];
-            $jurusan = $edit['jurusan'];
-            $alamat = $edit['alamat'];
-        }
-    ?>
+}
+?>
     
     <form method="post">
         <table width="25%" border="0">
