@@ -46,6 +46,7 @@
         while($edit = mysqli_fetch_array($result)){
             $nik = $edit['nik'];
             $nama = $edit['nama'];
+            $foto = $edit['foto'];
             $kelas = $edit['kelas'];
             $jurusan = $edit['jurusan'];
             $alamat = $edit['alamat'];
@@ -61,6 +62,18 @@
             <tr>
                 <td>Nama</td>
                 <td><input type="text" name="nama" value=<?php echo $nama;?>>></td>
+            </tr>
+            <tr>
+                <td>Foto</td>
+                <td>
+                    <!-- untuk menampilkan foto yang di upload -->
+                    <img src="img/<?php echo $foto;?>" style="width:120px; float:left; margin-bottom:5px;"/>
+
+                    <!-- untuk menginput foto yang di update -->
+                    <input type="file" name="foto"/>
+                    <!-- untuk label catatan -->
+                    <i style="float:left; font-size:11px; color:red;">Abaikan jika tidak berubah foto</i>
+                </td>
             </tr>
             <tr>
                 <td>Kelas</td>
