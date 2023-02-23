@@ -19,6 +19,53 @@
             $jurusan = $_POST['jurusan'];
             $alamat = $_POST['alamat'];
 
+             //untuk membuat sebuah nilai random
+       $ran = rand();
+
+       // untuk menampung ekstensi / format yang boleh di upload
+       $ekstensi = ['png','jpg','jpeg','svg'];
+
+       // menampung request file    
+       $namafile = $_FILES['foto']['name'];
+
+       // menampung request ukuran file
+       $ukuran = $_FILES['foto']['size'];
+
+       //untuk mengambil format ekstensi file
+       $ext = pathinfo($namafile, PATHINFO_EXTENSION);
+
+      //membuat sebuah validasi
+       if (empty($nik) || empty($nama) || empty($kelas) || empty($jurusan) || empty($alamat)) {
+         echo "<script>alert('Data tidak boleh kosong !');</script>";
+         //jika data yang dimasukkan lebih dari 1 atau ada persamaan request
+       } elseif (count((array) $connect->query('select nik from student where nik = "'.$nik.'"')->fetch_array()) > 1){
+        echo '<script>alert("Nik sudah ada !");</script>';
+        //input data ke database
+       } else {
+        // jika data ekstensi yang di tentuin tidak sesuai dengan ekstensi yang ada di file tersebut
+        if (!in_array($ext, $ekstensi)) {
+            echo '<script>
+                    alert("format file tidak sesuai !"); 
+                  </script>';
+        } else {
+            if ($ukuran < 1044070) {
+                $xx = $ran.'_'.$namafile;
+                //untuk menampung file ke dalam folder yang di tuju
+                move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$ran.'_'.$namafile);
+                //query untuk menyimpan data di database
+                $connect->query("insert into student(nik,nama,foto,kelas,jurusan,alamat) values ('$nik','$nama','$xx','$kelas','$jurusan','$alamat')");
+                echo '<script>
+                        alert("Data berhasil ditambahkan !");
+                        window.location.href = "halaman_admin.php";  
+                      </script>';
+            } else {
+                echo '<script>
+                        alert(" gagal Maning !");  
+                      </script>';
+            }
+        }
+    }
+
             // membuat query untuk update data
             $result = mysqli_query($connect, "UPDATE student SET nik='$nik', nama='$nama', kelas='$kelas', jurusan='$jurusan', alamat='$alamat' WHERE id='$id'");
 
