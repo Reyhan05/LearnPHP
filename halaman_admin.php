@@ -69,7 +69,7 @@
                             <td>".$hasil['jurusan']."</td>
                             <td>".$hasil['alamat']."</td>
                             <td>
-                                <a href='edit_admin.php? id=".$hasil['id']."'>Edit</a> | <a href='hapus_admin.php? id=".$hasil['id']."'>hapus</a>
+                                <a href='edit_admin.php?id=".$hasil['id']."'>Edit</a> | <a href='hapus_admin.php?id=".$hasil['id']."&&foto=".$hasil['foto']."'>hapus</a>
                             </td>
                           </tr>";   
                     } else {
@@ -81,7 +81,7 @@
                             <td>".$hasil['jurusan']."</td>
                             <td>".$hasil['alamat']."</td>
                             <td>
-                                <a href='edit_admin.php? id=".$hasil['id']."'>Edit</a> | <a href='hapus_admin.php? id=".$hasil['id']."'>hapus</a>
+                                <a href='edit_admin.php?id=".$hasil['id']."'>Edit</a> | <a href='hapus_admin.php?id=".$hasil['id']."&&foto=".$hasil['foto']."'>hapus</a>
                             </td>
                           </tr>";
                     }

@@ -5,6 +5,8 @@
     // memanggil parameter id yang akan dihapus
     $id = $_GET['id'];
 
+    
+
     // membuat query untuk menghapus data berdasarkan parameter id
     $result = mysqli_query($connect, "DELETE FROM student WHERE id='$id'");
 
